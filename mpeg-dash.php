@@ -33,7 +33,7 @@ function canonicalize($address)
 
 
 
-$masterFileUrl = str_replace('base64_init=true', 'base64_init=0', $masterFileUrl);
+$masterFileUrl = str_replace('base64_init=1', 'base64_init=0', $masterFileUrl);
 
 $cnt = file_get_contents($masterFileUrl);
 if(empty($cnt))

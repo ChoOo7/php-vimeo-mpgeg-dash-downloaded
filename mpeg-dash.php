@@ -53,7 +53,7 @@ $baseUrl = canonicalize(dirname($masterFileUrl)."/".$jsonInfos["base_url"]);
 
 $fluxCount = count($jsonInfos['video']);
 
-for($fluxNumber=0;$fluxNumber<=2;$fluxNumber++)
+for($fluxNumber=0;$fluxNumber < $fluxCount;$fluxNumber++)
 {
     $bitrate = $jsonInfos['video'][$fluxNumber]['bitrate'];
     $outputFile = $outputDir."/output-".$fluxNumber."-".$bitrate.".mp4";
@@ -73,7 +73,7 @@ for($fluxNumber=0;$fluxNumber<=2;$fluxNumber++)
     foreach($jsonInfos['video'][$fluxNumber]['segments'] as $i=>$seg)
     {
         //echo ".";
-        echo "\n".$i."/".$nbSeg." - ".$seg['url'];
+        echo "\n".(1+$fluxNumber).'/'.$fluxCount.' - '.(1+$i)."/".$nbSeg." - ".$seg['url'];
         $tsUrl = $baseUrl."/".$rep."".$seg['url'];
         $cnt = file_get_contents($tsUrl);
         file_put_contents($outputFile, $cnt, FILE_APPEND);

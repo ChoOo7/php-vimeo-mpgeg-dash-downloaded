@@ -66,6 +66,7 @@ for($fluxNumber=0;$fluxNumber < $fluxCount;$fluxNumber++)
     
     
     $tsUrl = $baseUrl.$rep."".$initSegment;
+    $tsUrl = str_replace('video//', 'video/', $tsUrl);
     $cnt = file_get_contents($tsUrl);
     file_put_contents($outputFile, $cnt, FILE_APPEND);
 
@@ -75,6 +76,7 @@ for($fluxNumber=0;$fluxNumber < $fluxCount;$fluxNumber++)
         //echo ".";
         echo "\n".(1+$fluxNumber).'/'.$fluxCount.' - '.(1+$i)."/".$nbSeg." - ".$seg['url'];
         $tsUrl = $baseUrl."/".$rep."".$seg['url'];
+        $tsUrl = str_replace('video//', 'video/', $tsUrl);
         $cnt = file_get_contents($tsUrl);
         file_put_contents($outputFile, $cnt, FILE_APPEND);
     }
